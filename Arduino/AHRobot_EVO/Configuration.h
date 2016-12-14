@@ -11,7 +11,7 @@
 #define MAX_ACCEL 275           // Maximun motor acceleration in (steps/seg2)/1000. Max recommended value:280
 #define MAX_SPEED 32000         // Maximun speed in steps/seg. Max absolute value: 32767!!
 
-#define MIN_ACCEL 80
+#define MIN_ACCEL 100
 #define MIN_SPEED 5000
 #define SCURVE_LOW_SPEED 2500
 #define SCURVE_HIGH_SPEED 28000
@@ -22,36 +22,40 @@
 #define Y_AXIS_STEPS_PER_UNIT 25
 
 // This is the center of the table. All units in milimeters
-#define TABLE_LENGTH 710
-#define TABLE_WIDTH 400
+// This are the dimensions of the official air hockey table Exploter from Buffalo
+#define TABLE_LENGTH 895
+#define TABLE_WIDTH 435
 #define ROBOT_CENTER_X TABLE_WIDTH/2   // Center of robot.
 #define ROBOT_CENTER_Y TABLE_LENGTH/2
 
 // Absolute Min and Max robot positions in mm (measured from center of robot pusher)
-#define ROBOT_MIN_X 56
-#define ROBOT_MIN_Y 50
+#define ROBOT_MIN_X 60
+#define ROBOT_MIN_Y 58
 #define ROBOT_MAX_X TABLE_WIDTH-ROBOT_MIN_X
-#define ROBOT_MAX_Y ROBOT_CENTER_Y-ROBOT_MIN_Y
+#define ROBOT_MAX_Y ROBOT_CENTER_Y-80
 
 // PuckSize (puck radio in mm)
-#define PUCK_SIZE 20
+#define PUCK_SIZE 22
 
 // Initial robot position in mm
 // The robot must be at this position at start time
 // Default: Centered in X and minimun position in Y
-#define ROBOT_INITIAL_POSITION_X 200
-#define ROBOT_INITIAL_POSITION_Y 30   // Measured from center of the robot pusher to the table border
+#define ROBOT_INITIAL_POSITION_X TABLE_WIDTH/2
+#define ROBOT_INITIAL_POSITION_Y 40   // Measured from center of the robot pusher to the table border
 
 // Robot defense and attack lines
-#define ROBOT_DEFENSE_POSITION_DEFAULT 58
-#define ROBOT_DEFENSE_ATTACK_POSITION_DEFAULT 200
-#define ROBOT_DEFENSE_POSITION_MIN 55
-#define ROBOT_DEFENSE_POSITION_MAX 80
-#define ROBOT_DEFENSE_ATTACK_POSITION_MIN 120
-#define ROBOT_DEFENSE_ATTACK_POSITION_MAX 250
+#define ROBOT_DEFENSE_POSITION_DEFAULT 72
+#define ROBOT_DEFENSE_ATTACK_POSITION_DEFAULT 280
+#define ROBOT_DEFENSE_POSITION_MIN 60
+#define ROBOT_DEFENSE_POSITION_MAX 100
+#define ROBOT_DEFENSE_ATTACK_POSITION_MIN 140
+#define ROBOT_DEFENSE_ATTACK_POSITION_MAX 360
+
+// CORRECTION FOR VISION SYSTEM LAG
+#define VISION_SYSTEM_LAG 60   // in miliseconds
 
 // CORRECTION OF MISSING STEPS ON MOTORS
-// Coment this lines if you donÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â´t want to make the corrections
+// Coment this lines if you don´t want to make the corrections
 #define CORRECT_MISSING_STEPS 1
 #define MISSING_STEPS_MAX_ERROR_X 5
 #define MISSING_STEPS_MAX_ERROR_Y 5
@@ -60,7 +64,7 @@
 // PACKET SIZE (UDP MESSAGE)
 #define PACKET_SIZE 12  // UDP PACKET SIZE (without sync mark), total size = PACKET_SIZE+3(sync mark)
 
-// Utils (donÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â´t modify)
+// Utils (don´t modify)
 #define CLR(x,y) (x&=(~(1<<y)))
 #define SET(x,y) (x|=(1<<y))
 

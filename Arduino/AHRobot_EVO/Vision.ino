@@ -63,7 +63,7 @@ void cameraProcess(int time)
   // It´s time to predict...
   // Based on actual position and move vector we need to know the future...
   // Posible impact? speed Y is negative when the puck is moving to the robot
-  if (puckSpeedYAverage < -25)
+  if (puckSpeedYAverage < -50)  //-25
   {
     predict_status = 1;
     // Puck is comming...
@@ -131,6 +131,7 @@ void cameraProcess(int time)
           predict_x_old = predict_x;
           // We introduce a factor (120 instead of 100) to model the bounce (20% loss in speed)(to improcve...)
           predict_time = predict_time + (predict_y - puckCoordY) * 120L / puckSpeedY; // in ms
+          predict_time -= VISION_SYSTEM_LAG;
         }
       }
     }
@@ -150,6 +151,8 @@ void cameraProcess(int time)
 
         predict_time = ((defense_position + PUCK_SIZE) - puckCoordY) * 100L / puckSpeedY; // in ms
         predict_time_attack = ((attack_position + PUCK_SIZE) - puckCoordY) * 100L / puckSpeedY; // in ms
+        predict_time -= VISION_SYSTEM_LAG;
+        predict_time_attack -= VISION_SYSTEM_LAG;
       }
     }
   }
@@ -165,12 +168,14 @@ void cameraProcess(int time)
 // Return the predicted position of the puck in predict_time miliseconds
 int predictPuckXPosition(int predict_time)
 {
+  predict_time += VISION_SYSTEM_LAG;
   return (puckCoordX + (long)puckSpeedXAverage * predict_time / 100L);
 }
 
 // Return the predicted position of the puck in predict_time miliseconds
 int predictPuckYPosition(int predict_time)
 {
+  predict_time += VISION_SYSTEM_LAG;
   return (puckCoordY + (long)puckSpeedYAverage * predict_time / 100L);
 }
 

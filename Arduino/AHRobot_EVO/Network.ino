@@ -55,34 +55,6 @@ void packetRead()
       return;
     }
 
-
-    /*
-      if ((SBuffer[2] == 'm') && (SBuffer[1] == 'm') && (SBuffer[0] == '0')) // PACKET TYPE 1
-      {
-       if (readStatus != 0)
-         Serial.println("P ERR");
-       readStatus = 1;
-       readCounter = PACKET_SIZE;
-       return;
-      }
-      else if ((SBuffer[2] == 'm')&&(SBuffer[1] == 'm')&&(SBuffer[0] == '1')) // PACKET TYPE 2
-      {
-       if (readStatus != 0)
-         Serial.println("P ERR");
-       readStatus = 2;
-       readCounter = PACKET_SIZE;
-       return;
-      }
-      else if ((SBuffer[2] == 'm')&&(SBuffer[1] == 'm')&&(SBuffer[0] == '1')) // PACKET TYPE 3
-      {
-       if (readStatus != 0)
-         Serial.println("P ERR");
-       readStatus = 3;
-       readCounter = PACKET_SIZE;
-       return;
-      }
-    */
-
     if (readStatus == 1)
     {
       readCounter--;   // Until we complete the packet
@@ -280,8 +252,5 @@ int ESPsendCommand(char *command, String stopstr, int timeout_secs)
   ESPwait(stopstr, timeout_secs);
   delay(250);
 }
-
-
-
 
 

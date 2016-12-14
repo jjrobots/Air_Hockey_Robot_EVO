@@ -1,16 +1,16 @@
-// JJROBOTS AHR2: AIR HOCKEY ROBOT EVO PROJECT
+// JJROBOTS AHR: AIR HOCKEY ROBOT EVO PROJECT (Smartphone control ready!)
 // Author: Jose Julio (JJROBOTS)
 // Hardware: Arduino Leonardo + JJROBOTS brain shield v3 (devia)
 // Date: 04/11/2015
-// Last updated: 04/10/2016
-// Version: 2.15
+// Last updated: 14/12/2016
+// Version: 2.17
 // Project page :
-//   http://jjrobots.com/air-hockey-robot-evo-index/
+//   http://jjrobotos.com/air-hockey-robot-evo/
 // GIT repository:
 //   http://github.com/jjrobots/Air_Hockey_Robot_EVO/
 // License: Open Software GPL License
 
-#define VERSION "2.15"
+#define VERSION "2.17"
 
 // ROBOT and USER configuration parameters
 #include "Configuration.h"
@@ -53,7 +53,7 @@ void setup()
 
   Serial.println("Initializing Wifi module...");
   // ESP Wifi module initialization routine.
-  // The Robot will generate itÃ¯Â¿Â½s own wifi network JJROBOTS_xx and listen external UDP messages...
+  // The Robot will generate it´s own wifi network JJROBOTS_xx and listen external UDP messages...
   ESPInit();
 
   Serial.println("Initializing Stepper motors...");
@@ -191,16 +191,16 @@ void loop()
         // Strategy based on puck prediction
         newDataStrategy();
         // Serial output (DEBUG)
-        Serial.print(" ");
-        Serial.print(cam_timestamp);
-        Serial.print(" ");
-        Serial.print(puckCoordX);
-        Serial.print(",");
-        Serial.print(puckCoordY);
-        Serial.print(" ");
-        Serial.print(predict_status);
-        Serial.print(",");
-        Serial.print(robot_status);
+        //Serial.print(" ");
+        //Serial.print(cam_timestamp);
+        //Serial.print(" ");
+        //Serial.print(puckCoordX);
+        //Serial.print(",");
+        //Serial.print(puckCoordY);
+        //Serial.print(" ");
+        //Serial.print(predict_status);
+        //Serial.print(",");
+        //Serial.print(robot_status);
       }
       else if (newPacket == 2) { // User sends a manual move
         robot_status = 5;    // Manual mode
